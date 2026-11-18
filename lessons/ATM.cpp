@@ -1,10 +1,3 @@
-//Option 1 displays the balance.
-//Option 2 asks for the withdrawal amount.
-//Reject amounts greater than the balance
-//Reject zero and negative amounts.
-//Deduct successful withdrawals from the balance.
-//Option 3 exits with a goodbye message.
-//Handle invalid menu selections.
 
 #include <iostream>
 using namespace std;
@@ -13,37 +6,55 @@ int main(){
     double balance = 5000;
     int choice;
     double amount;
+    int transactions = 0;
+    double deposit;
+    do{
+        cout << "1. Check balance" << endl;
+        cout << "2. deposit" << endl;
+        cout << "3. withdrawl" << endl;
+        cout << "4. Exit" << endl;
+        cout << "enter choice: ";
+        cin >> choice;
 
-    cout << "1. Check balance" << endl;
-    cout << "2. Withdraw" << endl;
-    cout << "3. Exit" << endl;
-    cout << "enter choice: ";
-    cin >> choice;
+        if (choice == 1){
+            cout << "balance: " << balance;
+        }
+        else if(choice == 2){
+            cout << "deposit amount: ";
+            cin >> deposit;
 
-    if (choice == 1){
-        cout << "balance: " << balance;
-    }
-    else if (choice == 2){
-        cout << "enter amount: ";
-        cin >> amount;
-
-        if (amount <= 0){
-            cout << "invalid amount";
+            if (deposit <= 0){
+                cout << "invalid amount" << endl;
+            }
+            else{
+                balance = balance + deposit;
+                transactions++;
+                cout << "successful deposit!" << endl;
+                cout << "new balance: " << balance << endl;
+            }
         }
-        else if (amount > balance){
-            cout << "insufficient balance";
+        else if (choice == 3){
+            cout << "enter amount: ";
+            cin >> amount;
+           
+            if (amount <= 0){
+                cout << "invalid amount";
+            }
+            else if (amount > balance){
+                cout << "insufficient balance";
+            }
+            else{
+                balance = balance - amount;
+                cout << "new balance: " << balance;
+            }
         }
-        else{
-            balance = balance - amount;
-            cout << "new balance: " << balance;
-        }
-    }
-    else if (choice == 3){
-        cout << "goodbye";
+        else if (choice == 4){
+        cout << "Thank you for banking with us";
     }
     else{
         cout << "invalid choice";
     }
+} while(choice != 4);
 
-    return 0;
+return 0;
 }
