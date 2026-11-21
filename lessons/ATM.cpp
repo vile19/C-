@@ -45,11 +45,13 @@ int main(){
             }
             else{
                 balance = balance - amount;
+                transactions++;
                 cout << "new balance: " << balance;
             }
         }
         else if (choice == 4){
-        cout << "Thank you for banking with us";
+        cout << "Thank you for banking with us";<< endl;
+        cout << "Total successful transactions: " << transactions << endl;
     }
     else{
         cout << "invalid choice";
