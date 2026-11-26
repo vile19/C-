@@ -7,8 +7,12 @@ const int MAX = 100;
 void showMenu();
 void checkBalance(double balance);
 void showStats(double transactions[0], int count);
-bool deposit(double &balance, double transactions[0], int &count);
-bool withdraw(double &balance, double transactions[0], int &count);
+bool deposit(double& balance, 
+    double* transactions[0], 
+    int&  count);
+bool withdraw(double &balance, 
+    double* transactions[0], 
+    int& count);
 
 void showMenu() {
     cout << "\n1. Check balance" << endl;
@@ -25,7 +29,7 @@ void checkBalance(double balance) {
 
 void showStats(double transactions[], int count) {
     if (count == 0) {
-        cout << "\nNo transaaction yet" << endl;
+        cout << "\nNo transaction yet" << endl;
         return;
     }
     double totalDeposits = 0;
@@ -88,7 +92,7 @@ bool deposit(double &balance, double transactions[], int &count) {
     }
 
     balance = balance + amount;
-    transactions[count] = amount;      // deposits stored as positive
+    transactions[count] = amount;      
     count++;
 
     cout << "Successful deposit!" << endl;
@@ -139,7 +143,6 @@ int main() {
     double transactions[MAX] = {500, 1200, 300, 750, 250};
     int count = 5;
 
-    showStats(transactions, count);
 
     do {
         showMenu();
